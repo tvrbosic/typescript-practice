@@ -16,11 +16,11 @@ let myNumbers: number[] = [1, 2, 3];
 let truths: boolean[] = [true, true, false];
 
 // ---------------------------------- Class ---------------------------------
-class Car {
+class Ship {
   /* Constructor, methods, attributes ... */
 }
 
-let car: Car = new Car();
+let ship: Ship = new Ship();
 
 // ---------------------------------- Object ---------------------------------
 let point: { x: number; y: number } = {
