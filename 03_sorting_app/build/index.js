@@ -1,12 +1,12 @@
 "use strict";
-class Sorter {
-    // collection: number[]; (covered by public keyword in constructor)
-    constructor(collection) {
-        this.collection = collection;
-        // this.collection = collection; (covered by public keyword in constructor)
-    }
-    sort() { }
-}
-const sorter = new Sorter([10, 3, -5, 0]);
+Object.defineProperty(exports, "__esModule", { value: true });
+const sorter_1 = require("./sorter");
+const CharactersCollection_1 = require("./CharactersCollection");
+// const numbersCollection = new NumbersCollection([11, 3, -5, 0]);
+// const sorter = new Sorter(numbersCollection);
+// sorter.sort();
+// console.log(numbersCollection.data);
+const charactersCollection = new CharactersCollection_1.CharactersCollection('Xaayb');
+const sorter = new sorter_1.Sorter(charactersCollection);
 sorter.sort();
-console.log(sorter.collection);
+console.log(charactersCollection.data);
