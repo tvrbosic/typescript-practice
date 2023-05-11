@@ -1,11 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MatchReader = void 0;
+// ############################## Composition approach ##############################
 const utils_1 = require("./utils");
+const CsvFileReader_1 = require("./CsvFileReader");
 class MatchReader {
     constructor(reader) {
         this.reader = reader;
         this.matches = [];
+    }
+    static fromCsv(filename) {
+        return new MatchReader(new CsvFileReader_1.CsvFileReader(filename));
     }
     load() {
         this.reader.read();
