@@ -1,10 +1,16 @@
-// Build and run project with:
-// npx parcel index.html
+/* 
+Install json-server with: 
+sudo npm install -g json-server
+
+Build and run project with:
+npm run start:db
+npm run start:parcel
+*/
+
+import axios from 'axios';
 import { User } from './models/User';
 
-const user = new User({ name: 'myname', age: 20 });
-
-user.set({ name: 'newname' });
-
-console.log(user.get('name'));
-console.log(user.get('age'));
+axios.post('http://localhost:3001/users', {
+  name: 'myname',
+  age: 20,
+});
