@@ -6,11 +6,10 @@ Build and run project with:
 npm run start:db
 npm run start:parcel
 */
-
-import axios from 'axios';
 import { User } from './models/User';
 
-axios.post('http://localhost:3001/users', {
-  name: 'myname',
-  age: 20,
-});
+const user = new User({ id: 1 });
+
+user.set({ name: 'NEW NAME', age: 999 });
+user.save();
+user.fetch();
