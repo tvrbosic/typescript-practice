@@ -8,8 +8,6 @@ npm run start:parcel
 */
 import { User } from './models/User';
 
-const user = new User({ id: 1 });
+const user = new User({ name: 'User 1', age: 20 });
 
-user.set({ name: 'NEW NAME', age: 999 });
-user.save();
-user.fetch();
+user.sync.save(user.attributes.getAll());

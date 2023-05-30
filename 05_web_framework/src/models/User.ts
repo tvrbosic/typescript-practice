@@ -1,4 +1,6 @@
 import { Eventing } from './Eventing';
+import { Sync } from './Sync';
+import { Attributes } from './Attributes';
 
 interface IUserProps {
   id?: number;
@@ -8,16 +10,26 @@ interface IUserProps {
 
 type Callback = () => void;
 
+const rootUrl = 'http://localhost:3001/users';
+
 export class User {
   public events: Eventing = new Eventing();
+  public sync: Sync<IUserProps> = new Sync<IUserProps>(rootUrl);
+  public attributes: Attributes<IUserProps>;
 
-  constructor(private data: IUserProps) {}
-
-  get(propName: string): string | number {
-    return this.data[propName];
+  constructor(private data: IUserProps) {
+    this.attributes = new Attributes<IUserProps>(data);
   }
 
-  set(update: IUserProps): void {
-    Object.assign(this.data, update);
+  get on() {
+    return this.events.on;
+  }
+
+  get trigger() {
+    return this.events.trigger;
+  }
+
+  get get() {
+    return this.attributes.get;
   }
 }
