@@ -3,16 +3,16 @@ type Callback = () => void;
 export class Eventing {
   private events: { [key: string]: Callback[] } = {};
 
-  on(eventName: string, callback: Callback): void {
+  on = (eventName: string, callback: Callback): void => {
     // Use existing array of callbacks or create a new one
     const handlers = this.events[eventName] || [];
     // Add new callback to array
     handlers.push(callback);
     // Update object with new array of callbacks
     this.events[eventName] = handlers;
-  }
+  };
 
-  trigger(eventName: string): void {
+  trigger = (eventName: string): void => {
     // Get array of callbacks for given event name
     const handlers = this.events[eventName];
     // If no callbacks, exit
@@ -23,5 +23,5 @@ export class Eventing {
     handlers.forEach((callback) => {
       callback();
     });
-  }
+  };
 }
