@@ -6,12 +6,8 @@ Build and run project with:
 npm run start:db
 npm run start:parcel
 */
-import { Collection } from './models/Collection';
+import { UserForm } from './views/UserForm';
 
-const collection = new Collection('http://localhost:3001');
+const userForm = new UserForm(document.getElementById('root')!);
 
-collection.fetch();
-
-collection.on('change', () => {
-  console.log(collection);
-});
+userForm.render();
