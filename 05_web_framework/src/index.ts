@@ -6,12 +6,12 @@ Build and run project with:
 npm run start:db
 npm run start:parcel
 */
-import { User } from './models/User';
+import { Collection } from './models/Collection';
 
-const user = User.buildUser({ id: 1, name: 'User 1', age: 20 });
+const collection = new Collection('http://localhost:3001');
 
-user.on('change', () => {
-  console.log(user);
+collection.fetch();
+
+collection.on('change', () => {
+  console.log(collection);
 });
-
-user.fetch();
