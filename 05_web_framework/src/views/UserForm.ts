@@ -11,7 +11,7 @@ export class UserForm extends View<User, IUserProps> {
   }
 
   saveClickHandler = (): void => {
-    console.log('Hi there');
+    this.model.save();
   };
 
   changeNameClickHandler = (): void => {
@@ -26,10 +26,7 @@ export class UserForm extends View<User, IUserProps> {
   template(): string {
     return `
     <div>
-      <h1>User Form</h1>
-      <div>User name: ${this.model.get('name')}</div>
-      <div>User Age: ${this.model.get('age')}</div>
-      <input />
+      <input placeholder="${this.model.get('name')}" />
       <button id="changeNameBtn">Change Name</button>
       <button id="randomAgeBtn">Set Random Age</button>
       <button id="saveBtn">Save</button>
