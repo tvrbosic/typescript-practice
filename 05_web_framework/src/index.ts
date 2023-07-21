@@ -6,17 +6,20 @@ Build and run project with:
 npm run start:db
 npm run start:parcel
 */
-import { User } from './models/User';
-import { UserEdit } from './views/UserEdit';
+import { UserList } from './views/UserList';
+import { Collection } from './models/Collection';
+import { User, IUserProps } from './models/User';
 
-const user = User.buildUser({ name: 'NAME', age: 20 });
-const root = document.getElementById('root');
+const users = new Collection('http://localhost:3001/users', (json: IUserProps) => {
+  return User.buildUser(json);
+});
 
-if (root) {
-  const userEdit = new UserEdit(root, user);
-  userEdit.render();
+users.on('change', () => {
+  const root = document.getElementById('root');
 
-  console.log(userEdit);
-} else {
-  throw new Error('Root element not found');
-}
+  if (root) {
+    new UserList(root, users).render();
+  }
+});
+
+users.fetch();

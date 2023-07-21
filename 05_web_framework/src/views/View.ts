@@ -55,6 +55,7 @@ export abstract class View<T extends Model<K>, K extends HasId> {
   }
 
   render(): void {
+    // Clear the parent element in case of re-rendering
     this.parent.innerHTML = '';
 
     const templateElement = document.createElement('template');
