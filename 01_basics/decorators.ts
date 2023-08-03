@@ -5,13 +5,23 @@ class Boat {
     return `This boat's color is ${this.color}`;
   }
 
-  @testDecorator
+  @logError('Something bad happened while boating!')
   pilot(): void {
     console.log('Swish!');
+    throw new Error();
   }
 }
 
-function testDecorator(target: any, key: string): void {
-  console.log('Target:', target);
-  console.log('Key:', key);
+function logError(errorMessage: string) {
+  return function (target: any, key: string, descriptor: PropertyDescriptor): void {
+    const method = descriptor.value;
+
+    descriptor.value = function () {
+      try {
+        method();
+      } catch (e) {
+        console.log(errorMessage);
+      }
+    };
+  };
 }
