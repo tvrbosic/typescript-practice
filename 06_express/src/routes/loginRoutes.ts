@@ -37,14 +37,14 @@ router.get('/', (req: Request, res: Response) => {
     res.send(`
       <div>
         <div>You are logged in</div>
-        <a href="/logout">Logout</a>
+        <a href="/auth/logout">Logout</a>
       </div>
     `);
   } else {
     res.send(`
       <div>
         <div>You are not logged in</div>
-        <a href="/login">Login</a>
+        <a href="/auth/login">Login</a>
       </div>
     `);
   }
