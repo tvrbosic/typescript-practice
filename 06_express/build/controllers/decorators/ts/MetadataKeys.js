@@ -6,4 +6,5 @@ var E_MetadataKeys;
     E_MetadataKeys["PATH"] = "path";
     E_MetadataKeys["METHOD"] = "method";
     E_MetadataKeys["MIDDLEWARE"] = "middleware";
+    E_MetadataKeys["VALIDATOR"] = "validator";
 })(E_MetadataKeys = exports.E_MetadataKeys || (exports.E_MetadataKeys = {}));
